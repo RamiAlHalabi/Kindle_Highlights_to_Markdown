@@ -7,3 +7,9 @@ v1.1:
 v2.0:
 - Added ability to edit the words used as headings (automatically saved and loaded from config file)
 - Minor updates to app layout
+
+v2.1:
+- Bugfixes
+
+v2.2:
+- Fixed author name trailing spaces bug
