@@ -46,7 +46,7 @@ def load_config():
                            'subheading':['subheading','##'],'important':['important','###'],\
                            'chapsummary':['chapsummary'],\
                            'reserved':['introduction','appendix','foreword','dedication','toc','conclusion',\
-                                       'acknowledgements','notes','references','summary','preface']},\
+                                       'acknowledgments','notes','references','summary','preface']},\
                   'f_pg_no' : True,'f_pg_no_heading' : True,'f_loc_no' : True,'f_export_all' : False}
         
         with open('config.json', 'w') as f:
@@ -414,9 +414,13 @@ def print_rec_to_file(rec,md):
 
             elif note_l.startswith(tuple(mapping['important'])):
                 string += "> **_" + content + '_**  \n'    # Bold Italic Text
+                if page == 0 or not config['f_pg_no_heading']:
+                    string += '\n'
                 
             elif note_l.startswith(tuple(mapping['subheading'])):
                 string += "> **" + content + '**  \n'    # Bold Text 
+                if page == 0 or not config['f_pg_no_heading']:
+                    string += '\n'
 
             elif note_l.startswith(tuple(mapping['heading'])):
                 string += "##### " + content + '  \n\n'  
@@ -426,6 +430,8 @@ def print_rec_to_file(rec,md):
 
             elif note_l.startswith(tuple(mapping['chapsummary'])):
                 string += "##### Chapter Summary  \n>" + content + '  \n'
+                if page == 0 or not config['f_pg_no_heading']:
+                    string += '\n'
 
             else:
                 string += "#### " + content + '  \n\n'
