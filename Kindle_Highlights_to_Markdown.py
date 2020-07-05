@@ -142,7 +142,7 @@ def load_file():
     records_list = [] #list of Record objects
     for record in records:
         index = record[0].rfind(' (')
-        author = record[0][index+2:-1]
+        author = record[0].rstrip()[index+2:-1]
         title = record[0] = record[0][0:index]
         meta = record[1][7:].split(' | ')
         content = record[2]
