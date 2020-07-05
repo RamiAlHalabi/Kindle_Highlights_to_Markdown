@@ -46,7 +46,7 @@ def load_config():
                            'subheading':['subheading','##'],'important':['important','###'],\
                            'chapsummary':['chapsummary'],\
                            'reserved':['introduction','appendix','foreword','dedication','toc','conclusion',\
-                                       'acknowledgments','notes','references','summary','preface']},\
+                                       'acknowledgements','notes','references','summary','preface']},\
                   'f_pg_no' : True,'f_pg_no_heading' : True,'f_loc_no' : True,'f_export_all' : False}
         
         with open('config.json', 'w') as f:
@@ -142,7 +142,7 @@ def load_file():
     records_list = [] #list of Record objects
     for record in records:
         index = record[0].rfind(' (')
-        author = record[0].rstrip()[index+2:-1]
+        author = record[0][index+2:-1]
         title = record[0] = record[0][0:index]
         meta = record[1][7:].split(' | ')
         content = record[2]
@@ -414,13 +414,9 @@ def print_rec_to_file(rec,md):
 
             elif note_l.startswith(tuple(mapping['important'])):
                 string += "> **_" + content + '_**  \n'    # Bold Italic Text
-                if page == 0 or not config['f_pg_no_heading']:
-                    string += '\n'
                 
             elif note_l.startswith(tuple(mapping['subheading'])):
                 string += "> **" + content + '**  \n'    # Bold Text 
-                if page == 0 or not config['f_pg_no_heading']:
-                    string += '\n'
 
             elif note_l.startswith(tuple(mapping['heading'])):
                 string += "##### " + content + '  \n\n'  
@@ -430,8 +426,6 @@ def print_rec_to_file(rec,md):
 
             elif note_l.startswith(tuple(mapping['chapsummary'])):
                 string += "##### Chapter Summary  \n>" + content + '  \n'
-                if page == 0 or not config['f_pg_no_heading']:
-                    string += '\n'
 
             else:
                 string += "#### " + content + '  \n\n'

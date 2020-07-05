@@ -1,2 +1,9 @@
 v1.0:
 Initial release
+
+v1.1:
+- Fixed long path and long filename issue (shortened displayed paths)
+
+v2.0:
+- Added ability to edit the words used as headings (automatically saved and loaded from config file)
+- Minor updates to app layout
