@@ -556,7 +556,7 @@ def configure_headings():
 
 def save(categories,entries,win2):
     lists = [] #empty list that will hold the new typed-in headings
-    entry = ''
+    entry = None
     try:
         for entry in entries:
             x = ast.literal_eval(entry.get())
