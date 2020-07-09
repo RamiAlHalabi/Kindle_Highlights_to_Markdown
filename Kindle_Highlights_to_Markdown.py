@@ -145,7 +145,12 @@ def load_file():
         author = record[0].rstrip()[index+2:-1]
         title = record[0] = record[0][0:index]
         meta = record[1][7:].split(' | ')
-        content = record[2]
+        content = ""
+        try:
+            content = record[2]
+            pass
+        except:
+            content = " "
         content = content.replace('$','\$')
 
         page = 0
