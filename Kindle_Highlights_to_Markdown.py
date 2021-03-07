@@ -40,7 +40,7 @@ def load_config():
         with open('config.json', 'r') as f:
             config = json.load(f)
     except OSError as e:
-        print('Config file not found. Created with Default Values. ' + str(e))
+        print('Config file not found. Created with Default Values. ' + str(e)) ## The below are default values. They will be overwritten when a user sets their preferences.
         config = {'path': 'M:\\Calibre Book Library_2\\Kindle\\',
               'mapping' : {'section':['section','part'],'chapter':['chapter'],'heading':['heading','#'],\
                            'subheading':['subheading','##'],'important':['important','###'],\
